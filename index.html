@@ -6,17 +6,24 @@
 	<meta charset="utf-8" />
 	<script type='text/javascript'>  
 	
-while (port && port.readable){
-    const { value, done } = await reader.read();
-        if (done) {
-            break;
-        }
-        // value is a string.
-        ReceivedData +=value;
-        if(ReceivedData.includes('\u0004\u0003')){
-            break;
-        }
-}
+	app.Use(async (context, next) =>
+    
+	{      
+	         context.Response.Headers.Add("Permissions-Policy: fullscreen=(self 'https://epics-evei.github.io/'), geolocation=*, camera=();");
+	         await next(); 
+	});
+	
+	
+	console.log("Running...\n");
+	
+	navigator.usb.getDevices().then((devices) => {
+		  devices.forEach((device) => {
+		    console.log(device.productName);      // "Arduino Micro"
+		    console.log(device.manufacturerName); // "Arduino LLC"
+		  });
+	})
+	
+	console.log("\nDone");
 	
     </script>
 </head>
