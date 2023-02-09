@@ -2,16 +2,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+<iframe> Permissions-Policy: geolocation=() </iframe>
 <title> Serial Output Test </title>
 	<meta charset="utf-8" />
 	<script type='text/javascript'>  
-	
-	app.Use(async (context, next) =>
-    
-	{      
-	         context.Response.Headers.Add("Permissions-Policy: fullscreen=(self 'https://epics-evei.github.io/'), geolocation=*, camera=();");
-	         await next(); 
-	});
 	
 	
 	console.log("Running...\n");
